@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine?</title>
+
+<style>
+body {
+    background:#fff0f5;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    margin-top:80px;
+    overflow:hidden;
+}
+
+h1 {color:hotpink;font-size:48px;}
+
+button{
+padding:12px 30px;
+font-size:20px;
+margin:15px;
+border-radius:10px;
+border:none;
+cursor:pointer;
+}
+
+#yes{background:pink;}
+#no{background:lightgray;}
+#back{background:#ffb6c1;}
+
+#main{display:block;}
+#reaction{display:none;max-width:400px;margin:auto;}
+#yesScreen{display:none;}
+
+.gifRow{
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+.rose{
+position:fixed;
+top:-40px;
+font-size:24px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{transform:translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="main">
+<h1>Will you be my Valentine? 👉🏻👈🏻</h1>
+<button id="yes">Yes</button>
+<button id="no">No</button>
+</div>
+
+<div id="reaction">
+
+<div id="gif1" class="tenor-gif-embed" data-postid="17177196042742046578"></div>
+<div id="gif2" class="tenor-gif-embed" data-postid="22424458" style="display:none"></div>
+<div id="gif3" class="tenor-gif-embed" data-postid="12626346118847122059" style="display:none"></div>
+<div id="gif4" class="tenor-gif-embed" data-postid="17859887068440934233" style="display:none"></div>
+
+<h2 id="text">What the hell bro?</h2>
+<button id="back">Back</button>
+
+</div>
+
+<div id="yesScreen">
+
+<div class="gifRow">
+
+<div class="tenor-gif-embed"
+data-postid="11000884495126033687"
+data-share-method="host"
+data-width="100%"></div>
+
+<div class="tenor-gif-embed"
+data-postid="13779096733021884000"
+data-share-method="host"
+data-width="100%"></div>
+
+</div>
+
+<div id="yesText"></div>
+
+</div>
+
+<script src="https://tenor.com/embed.js"></script>
+
+<script>
+let noCount=0;
+
+no.onclick=()=>{
+noCount++;
+main.style.display="none";
+reaction.style.display="block";
+
+gif1.style.display="none";
+gif2.style.display="none";
+gif3.style.display="none";
+gif4.style.display="none";
+
+if(noCount==1){gif1.style.display="block";text.innerText="What the hell bro?";}
+else if(noCount==2){gif2.style.display="block";text.innerText="Seriously?";}
+else if(noCount==3){gif3.style.display="block";text.innerText="Where is this going?";}
+else{gif4.style.display="block";text.innerText="Not funny!";}
+}
+
+back.onclick=()=>{
+reaction.style.display="none";
+main.style.display="block";
+}
+
+yes.onclick=()=>{
+main.style.display="none";
+reaction.style.display="none";
+yesScreen.style.display="block";
+
+setTimeout(()=>{
+yesText.innerHTML="<h2 style='margin-top:30px;color:hotpink;font-size:32px;'>See you on 14th Feb cutie😘</h2>";
+},500);
+
+for(let i=0;i<30;i++){
+let r=document.createElement("div");
+r.className="rose";
+r.innerHTML="🌹";
+r.style.left=Math.random()*100+"%";
+r.style.animationDuration=3+Math.random()*5+"s";
+document.body.appendChild(r);
+}
+}
+</script>
+
+</body>
+</html>
